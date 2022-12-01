@@ -1,0 +1,64 @@
+<head>
+    <meta charset="utf-8">
+    <title>Assignment 1</title>
+    <script>
+        function canvasBackground () {
+            var canvas = document.getElementById("mycanvas");
+            var context = canvas.getContext("2d");
+            //background color
+            context.fillStyle = "cyan";
+            context.fillRect(0, 0, canvas.width, canvas.height); 
+            //ground color
+            context.fillStyle = "green";
+            context.fillRect(0, 420, canvas.width, canvas.height); 
+
+            //draws sun
+            var centerX = 100;
+            var centerY = 100;
+            var radius = 50;
+
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'yellow';
+            context.fill();
+            context.lineWidth = 2;
+            context.strokeStyle = '#003300';
+            context.stroke();
+
+            //dscription
+            context.font="20px Arial";
+            context.fillStyle = "black";
+            var line=22;
+            var height=25;
+            context.fillText("Hello World",470,height*line); 
+            line++;
+      }
+        document.addEventListener('DOMContentLoaded', canvasBackground);
+
+        function linkPage () {
+            //links back to main
+            var a = document.createElement('a'); 
+                  
+            var link = document.createTextNode("Back to Main Page");
+                    
+            a.appendChild(link); 
+                    
+            a.title = "Back to Main Page"; 
+                    
+            a.href = "https://jeffwu56709.github.io/jeffwu56709/"; 
+                    
+            document.body.appendChild(a); 
+    
+      }
+        document.addEventListener('DOMContentLoaded', linkPage);       
+  </script>
+
+  </head>
+  <body>
+  <div id="gameArea">
+      <canvas id="mycanvas" width="1000" height="600">
+
+      </canvas>
+  </div>
+  
+  </body></html>
