@@ -3,6 +3,7 @@
     <title> Homework 2 </title> 
     </head>
     <script>
+        //plays sound clips
         function sound1() {
             var sound = document.getElementById("music1"); 
             sound.play(); 
@@ -25,11 +26,13 @@
         }
     </script>
     <body> 
+        <!-- adds urls of sound clips -->
         <audio id="music1" src="https://upload.wikimedia.org/wikipedia/commons/4/44/1_Chopin%2C_Berceuse_%28piano-Christine_Hartley%29.ogg" ></audio> 
         <audio id="music2" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Bras%C3%ADlio_Itiber%C3%AA_-_A_Sertaneja.ogg"></audio>
         <audio id="music3" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Barcarolle-op-60.ogg"></audio>
         <audio id="music4" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Bolero-op-19.ogg"></audio>
         <audio id="music5" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Chopin_-_Fantasie_Impromptu_Op._66_played_by_Dario_Fernandez_Torre.oga"></audio>
+        <!-- displays box and buttons -->
         <div style="background-color:blueviolet;width:400px;height:250px;"> 
             <h2 style="margin-left:75px;padding:10px"> Classical Music Player </h2>
             <button style="margin-left:30px;padding:30px" onclick="sound1();">Music 1</button>
