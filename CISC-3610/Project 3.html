@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 3</title>
+</head>
+<body>
+  <!-- creates the form -->
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="bgcolor">Background Color:</label>
+    <input type="color" id="bgcolor" name="bgcolor" value="#ffffff"><br>
+    <label for="color">Text Color:</label>
+    <input type="color" id="tcolor" name="tcolor"><br>
+    <label for="size">Text Size:</label>
+    <input type="range" id="tsize" name="tsize" min="12" max="48"><br>
+    <label for="font">Font:</label>
+    <input type="radio" id="font2" name="font" value="Arial" checked>
+    <label for="font">Arial</label>
+    <input type="radio" id="font2" name="font" value="Times New Roman">
+    <label for="font">Times New Roman</label>
+    <input type="radio" id="font3" name="font" value="Calibri">
+    <label for="font">Calibri</label><br>
+    <input type="submit" value="Submit"><br>
+    <input type="reset" value="Reset" id="reset">
+  </form>
+  <div id="text"></div>
+
+  <script>
+    //displays the data received 
+    function draw() {
+      var name = document.getElementById("name").value;
+      var bgcolor = document.getElementById("bgcolor").value;
+      var color = document.getElementById("tcolor").value;
+      var size = document.getElementById("tsize").value;
+      var font = document.querySelector('input[name="font"]:checked').value;
+
+      document.getElementById("text").innerHTML = name;
+      document.getElementById("text").style.backgroundColor = bgcolor;
+      document.getElementById("text").style.color = color;
+      document.getElementById("text").style.fontSize = size + "px";
+      document.getElementById("text").style.fontFamily = font;
+    }
+    
+    document.getElementById("name").addEventListener("input", draw);
+    document.getElementById("bgcolor").addEventListener("input", draw);
+    document.getElementById("tcolor").addEventListener("input", draw);
+    document.getElementById("tsize").addEventListener("input", draw);
+    for (var i = 0; i < document.getElementsByName("font").length; i++) {
+      document.getElementsByName("font")[i].addEventListener("input", draw);
+    }
+    
+    //resets the form
+    document.getElementById("reset").addEventListener("click", function() {
+      document.getElementById("name").value = "";
+      document.getElementById("bgcolor").value = "white";
+      document.getElementById("tcolor").value = "black";
+      document.getElementById("tsize").value = "12";
+      draw();
+    });
+  </script>
+</body>
+</html>
