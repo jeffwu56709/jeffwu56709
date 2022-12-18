@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 5</title>   
+</head>
+<body>
+</body>
+<h1>Top 10 Most Popular Asian Female Baby Names in 2019</h1>
+    <div style="width: 800px;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div style="width: 800px;">
+        <canvas id="myChart2"></canvas>
+    </div>
+    <h3>Jeffrey Wu</h3>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    //creates bar graph
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Chloe', 'Olivia', 'Mia', 'Sophia', 'Emma', 'Amelia', 'Charlotte', 'Emily', 'Grace', 'Isabella', ],
+        datasets: [{
+          label: '# of Occurences',
+          data: [131, 109, 88, 71, 71, 60, 57, 53, 48, 43],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    //creates pie graph
+    const context = document.getElementById('myChart2');
+    new Chart(context, {
+      type: 'pie',
+      data: {
+        labels: ['Chloe', 'Olivia', 'Mia', 'Sophia', 'Emma', 'Amelia', 'Charlotte', 'Emily', 'Grace', 'Isabella', ],
+        datasets: [{
+          label: '# of Occurences',
+          data: [131, 109, 88, 71, 71, 60, 57, 53, 48, 43],
+          borderWidth: 1
+        }]
+      },
+    });
+  </script>
+</html>
