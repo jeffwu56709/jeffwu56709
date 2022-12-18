@@ -1,0 +1,79 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 2</title>
+  <style>
+    body {
+       background-image: url("https://static.wikia.nocookie.net/megaman/images/7/74/WilyCastle3.png/revision/latest?cb=20090329163435");background-repeat:no-repeat;
+       background-size: 1000px 600px;
+  </style>
+</head>
+<body>
+    <div id="background">
+        <canvas id="mycanvas" width="1000" height="600">
+        </canvas>
+    </div>
+</body>
+<script>
+    /*loads sprite sheet*/
+    let img = new Image();
+    img.src = 'https://i.imgur.com/eBzfaSV.png';
+    img.onload = function() {
+        init();
+    };
+    let canvas = document.querySelector('canvas');
+    let context = canvas.getContext('2d');
+    
+    const width = 60;
+    const height = 69;
+    /*variable use to move images along x axis*/
+    var schmovement = 0;
+    
+    function drawFrame(frameX, frameY, canvasX, canvasY,) {
+    context.drawImage(img, frameX * width, 0 * height, width, height,  schmovement, 475, width, height); 
+    /*text bubble 1*/
+    if (schmovement<200){
+        context.fillStyle = "white";
+        context.fillRect(schmovement, 450, 100, 30); 
+        context.fillStyle = "black";
+        context.fillText("please open the door",schmovement+5,470,90,30); 
+    }
+    /*text bubble 2*/
+    if (schmovement>300 && schmovement<450){
+        context.fillStyle = "white";
+        context.fillRect(schmovement, 450, 50, 30); 
+        context.fillStyle = "black";
+        context.fillText("thanks",schmovement+11,470,40,30); 
+    }
+    }
+    /*sprites used*/
+    const cycleLoop = [0, 1, 2, 3, 4];
+        let currentLoopIndex = 0;
+        let frameCount = 0;
+        let currentDirection = 0;
+
+    /*fps check*/
+    function step() {
+        frameCount++;
+        if (frameCount < 10) {
+            window.requestAnimationFrame(step);
+            return;
+        }
+        frameCount = 0;
+        /*resets positions when megaman reaches castle*/
+        schmovement=schmovement+10;
+        if (schmovement>500){
+            schmovement=0;
+        }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        drawFrame(cycleLoop[currentLoopIndex], 0, 0, 450);
+        currentLoopIndex++;
+        if (currentLoopIndex >= cycleLoop.length) {
+            currentLoopIndex = 0;
+        }
+        window.requestAnimationFrame(step);
+        }
+    function init() {
+        window.requestAnimationFrame(step);
+  }
+</script>
+</html>
