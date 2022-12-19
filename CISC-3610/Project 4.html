@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project 4</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600">
+    </canvas>
+    <button id="speak-button">Speak</button>
+    <p>Say "color" to change the color of the circle. For example "color blue" to make the circle blue.</p>
+    <p>Say "size" to change the size of the circle. For example "size 50" to make the circle with a diameter of 50.</p>
+</body>
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
 
+    //prompts user for diameter size
+    let diameter = prompt("Enter diameter value: ");
+    let radius = diameter / 2;
+
+    //creates circle
+    ctx.beginPath();
+    ctx.arc(300, 300, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = "black";
+    ctx.fill();
+
+    //changes button text on click
+    const speakButton = document.getElementById("speak-button");
+    speakButton.addEventListener("click", function() {
+    if (speakButton.innerHTML === "Speak") {
+        speakButton.innerHTML = "Stop";
+    } else {
+        speakButton.innerHTML = "Speak";
+    }
+    });
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+
+    let color = "black";
+    let size = 25;
+
+    // Set up event listener for when user speaks
+    recognition.addEventListener("result", function(event) {
+    // Get transcript of what the user said
+    const transcript = event.results[0][0].transcript;
+    
+    // Check if user said "color" followed by a color
+    if (transcript.startsWith("color")) {
+        // Set color to the color specified by the user
+        color = transcript.split(" ")[1];
+    }
+
+    // Check if user said "size" followed by a number
+    if (transcript.startsWith("size")) {
+        // Set size to the number specified by the user
+        size = parseInt(transcript.split(" ")[1]);
+
+        // Checks if size is larger than 300
+        if (size > 300) {
+        <p>Size limit 300</p>
+        size = 300;
+        }
+
+        // Checks if size is smaller than 1
+        if (size < 1) {
+        <p>"Size too small, the minimum size is 1</p>]
+        size = 1;
+        }
+    }
+});
+</script>
+</html>
